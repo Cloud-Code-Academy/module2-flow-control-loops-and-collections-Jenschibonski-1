@@ -305,12 +305,15 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer sumPositiveIntegers() {
         List<Integer> numbers = new List<Integer>{-1, 2, -3, 4, -5, 6}; //DO NOT CHANGE
-
+        Integer sum = 0;
         // Loop through the list of integers
+        for(Integer num : numbers){
             // if the number is negative skip this iteration
-        
-
-        return null; // Replace null with the variable you used to store the result
+        if (num > 0){
+            sum += num;
+        }
+    }
+        return sum; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -323,13 +326,16 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer findWordInList(String wordToFind, List<String> words) {
         // The variable to store the index of the word
-
+        Integer wordIndex = -1;
         // Loop through the list of words
-            // If the current word is the word to find, exit the loop
-
-        return null; // Replace null with the variable you used to store the result
-    }
-
+        for(Integer i = 0; i < words.size(); i++){
+           if(words [i] == wordToFind ) {
+            wordIndex = i;
+            break;
+           }
+        }
+        return wordIndex;
+}
     /**
      * Question 17
      * Loop through the list of money and adds them up until it accumulates more than 40 and then stops counting.
@@ -338,11 +344,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return The total value in dollars, stopped at the point when it exceeds 40 dollars.
      */
     public static Decimal countMoney() {
-        // The list of money in the wallet, represented in dollars and cents
         List<Decimal> moneyInWallet = new List<Decimal>{0.50, 10, 3.84, 24.60, 9.08, 50, 4.90}; //DO NOT CHANGE
-
-        return null; // Replace null with the variable you used to store the result
+        Decimal sum = 0;
+        for(Integer i = 0; i < moneyInWallet.size(); i++) {
+            sum += moneyInWallet[i]; 
+            if(sum > 40) {
+                break;
+            }
+        }
+        return sum;
     }
+    
 
     /**
      * Question 18
@@ -352,15 +364,15 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Map<String, Integer> addItemsToMap() {
         // Initialize an empty Map
-
+        Map<String, Integer> fruitCounts = new Map<String, Integer>();
         // Add key-value pairs to the Map
-        // add Apples => 5
-        // add Oranges => 10
-        // add Bananas => 15
-        // add Pears => 20
-        // add Grapes => 25
+        fruitCounts.put('Apples', 5);
+        fruitCounts.put('Oranges', 10);
+        fruitCounts.put('Bananas', 15);
+        fruitCounts.put('Pears', 20);
+        fruitCounts.put('Grapes',  25);
 
-        return null; // Replace null with the variable you used to store the result
+        return fruitCounts; 
     }
 
     /**
@@ -374,17 +386,20 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer getSalary(String employeeName) {
         // Initialize a Map
-
+        Map<String, Integer> empSalary = new Map<String, Integer>();
         // Add key-value pairs to the Map
-        // add John Doe => 50000
-        // add Jane Smith => 60000
-        // add Sam Brown => 55000
-        // add Alice Johnson => 65000
+        empSalary.put('John Doe',  50000);
+        empSalary.put('Jane Smith', 60000);
+        empSalary.put('Sam Brown', 55000);
+        empSalary.put('Alice Johnson', 65000);
 
         // Get the salary of the employee
-
+        Integer salary = empSalary.get(employeeName);
+        If(employeeName == null){
+            return null;
+        }
         // Return the salary of the employee, or null if the employee is not found in the Map
-        return null; // Replace null with the variable you used to store the result
+        return salary; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -402,19 +417,27 @@ public with sharing class FlowControlLoopsCollections {
         Map<String, Integer> employeeSalaries = new Map<String, Integer>();
 
         // Add key-value pairs to the Map
-        // add John Doe => 50000
+        employeeSalaries.put('John Doe', 50000);
         // add Jane Smith => 60000
+        employeeSalaries.put('Jane Smith', 60000);
         // add Sam Brown => 55000
+        employeeSalaries.put('Sam Brown', 55000);
         // add Alice Johnson => 65000
-
+        employeeSalaries.put('Alice Johnson', 65000);
         // Initialize a list to store the names of high paid employees
-
+        List<String> highSalary = new List<String>();
         // Iterate over the Map using a for loop
+        for(String employeeName :  employeeSalaries.keySet()){
+            Integer salary = employeeSalaries.get(employeeName); 
+            if(salary > 55000){
+                highSalary.add(employeeName);
+            }
+        }
             // Check if the salary of the employee is more than 55000
                 // Add the employee to the list of high paid employees
 
         // Return the list of high paid employees
-        return null; // Replace null with the variable you used to store the result
-    }
+        return highSalary; // Replace null with the variable you used to store the result
+        }
 
 }
